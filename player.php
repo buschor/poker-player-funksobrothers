@@ -12,7 +12,7 @@ class Player
     //else
     
   
-    for ($game_state->players as $ply) {
+    foreach ($game_state->players as $ply) {
       if (count($ply->hole_cards) > 0) {
         $iam = $ply;
       }
