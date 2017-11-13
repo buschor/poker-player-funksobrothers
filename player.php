@@ -2,7 +2,7 @@
 
 class Player
 {
-  const VERSION = "FunkSoBrothers Kick 'em out 0.9.2";
+  const VERSION = "FunkSoBrothers Kick 'em out 0.9.3";
 
   public function betRequest($game_state)
   {
@@ -19,7 +19,10 @@ class Player
     }*/
     $iam = $game_state['players'][$game_state['in_action']];
     
-    $bet = min($iam['stack'], max($game_state['big_blind'], $game_state['pot'] + $game_state['minimum_raise']));
+    if (($iam['hole_cards'][0]['rank'] == "A") || $iam['hole_cards'][1]['rank'] == "A"))
+      $bet = min($iam['stack'], max($game_state['big_blind'], $game_state['pot'] + $game_state['minimum_raise']));
+    else
+      $bet = 0;
     
     file_put_contents('php://stderr', "RBS: BET " . $bet .  "\n");
 
