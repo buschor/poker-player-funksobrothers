@@ -2,7 +2,7 @@
 
 class Player
 {
-  const VERSION = "FunkSoBrothers Kick 'em out 0.9.4";
+  const VERSION = "FunkSoBrothers Kick 'em out 0.9.5";
 
   public function betRequest($game_state)
   {
@@ -19,7 +19,12 @@ class Player
     }*/
     $iam = $game_state['players'][$game_state['in_action']];
     
-    if (($iam['hole_cards'][0]['rank'] == "A") || ($iam['hole_cards'][1]['rank'] == "A"))
+    $rank1 = $iam['hole_cards'][0]['rank'];
+    $rank2 = $iam['hole_cards'][1]['rank'];
+    
+    //if (($iam['hole_cards'][0]['rank'] == "A") || ($iam['hole_cards'][1]['rank'] == "A"))
+    if ((($rank1 == "A") || ($rank1 == "K") || ($rank1 == "Q") || ($rank1 == "J") || ($rank1 == "10")) &&
+        (($rank2 == "A") || ($rank2 == "K") || ($rank2 == "Q") || ($rank2 == "J") || ($rank2 == "10"))) 
       $bet = min($iam['stack'], max($game_state['big_blind'], $game_state['pot'] + $game_state['minimum_raise']));
     else
       $bet = 0;
