@@ -10,7 +10,7 @@ class Player
         //  return 10;          
         //}
         //else
-        return $game_state->pot * 2;
+        return $game_state->current_buy_in + 1;
     }
 
     public function showdown($game_state)
