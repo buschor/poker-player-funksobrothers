@@ -7,20 +7,20 @@ class Player
   public function betRequest($game_state)
   {
     //if ($game_state->round == 0) {
-    //  return 10;          
+    //  return 10;
     //}
     //else
-    
-  
+    print_r ($game_state);
+    fwrite(STDERR, serialize($game_state));
+
     foreach ($game_state->players as $ply) {
       if (count($ply->hole_cards) > 0) {
         $iam = $ply;
       }
     }
-    fwrite(STDERR, serialize($game_state));
-    
+
     return 200; //$game_state->current_buy_in + 1;
-    
+
   }
 
   public function showdown($game_state)
