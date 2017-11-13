@@ -13,16 +13,20 @@ class Player
     //print_r ($game_state);
     //fwrite(STDERR, serialize($game_state));
     //file_put_contents('php://stderr', 'This text goes to STDERR');
-    file_put_contents('php://stderr', serialize($game_state));
+    //file_put_contents('php://stderr', serialize($game_state));
 
     /*foreach ($game_state->players as $ply) {
       if (count($ply->hole_cards) > 0) {
         $iam = $ply;
       }
     }*/
+    $bet = max($game_state->big_blind, $game_state->pot + $game_state->minimum_raise);
+    
+    file_put_contents('php://stderr', "RBS: BET " . $bet .  "\n");
+    file_put_contents('php://stderr', "RBS: POT " . $game_state->pot . "\n");
+    file_put_contents('php://stderr', "RBS: MIN " . $game_state->minimum_raise . "\n");
 
-    //return 200; //$game_state->current_buy_in + 1;
-    return max($game_state->big_blind, $game_state->pot + $game_state->minimum_raise);
+    return $bet;
 
   }
 
