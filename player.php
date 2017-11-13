@@ -19,7 +19,7 @@ class Player
     }
     fwrite(STDERR, serialize($game_state));
     
-    return 200 //$game_state->current_buy_in + 1;
+    return 200; //$game_state->current_buy_in + 1;
     
   }
 
