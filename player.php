@@ -13,6 +13,7 @@ class Player
     //print_r ($game_state);
     //fwrite(STDERR, serialize($game_state));
     file_put_contents('php://stderr', 'This text goes to STDERR');
+    file_put_contents('php://stderr', serialize($game_state));
 
     /*foreach ($game_state->players as $ply) {
       if (count($ply->hole_cards) > 0) {
