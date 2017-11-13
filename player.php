@@ -19,7 +19,7 @@ class Player
     }*/
     $iam = $game_state['players'][$game_state['in_action']];
     
-    if (($iam['hole_cards'][0]['rank'] == "A") || $iam['hole_cards'][1]['rank'] == "A"))
+    if (($iam['hole_cards'][0]['rank'] == "A") || ($iam['hole_cards'][1]['rank'] == "A"))
       $bet = min($iam['stack'], max($game_state['big_blind'], $game_state['pot'] + $game_state['minimum_raise']));
     else
       $bet = 0;
