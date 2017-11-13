@@ -2,7 +2,7 @@
 
 class Player
 {
-  const VERSION = "FunkSoBrothers Kick 'em out 0.9.5";
+  const VERSION = "FunkSoBrothers Wipe 'em out 0.9.6";
 
   public function betRequest($game_state)
   {
@@ -18,17 +18,23 @@ class Player
       }
     }*/
     $iam = $game_state['players'][$game_state['in_action']];
-    
+
     $rank1 = $iam['hole_cards'][0]['rank'];
     $rank2 = $iam['hole_cards'][1]['rank'];
-    
+
     //if (($iam['hole_cards'][0]['rank'] == "A") || ($iam['hole_cards'][1]['rank'] == "A"))
     if ((($rank1 == "A") || ($rank1 == "K") || ($rank1 == "Q") || ($rank1 == "J") || ($rank1 == "10")) &&
-        (($rank2 == "A") || ($rank2 == "K") || ($rank2 == "Q") || ($rank2 == "J") || ($rank2 == "10"))) 
+        (($rank2 == "A") || ($rank2 == "K") || ($rank2 == "Q") || ($rank2 == "J") || ($rank2 == "10"))) {
       $bet = min($iam['stack'], max($game_state['big_blind'], $game_state['pot'] + $game_state['minimum_raise']));
-    else
+    }
+    elseif ($rank1 == $rank2) {
+      //current_buy_in - players[in_action][bet] + minimum_raise
+      $bet = min($iam['stack'], max($game_state['big_blind'], $game_state['current_buy_in'] - $iam['bet'] + $game_state['minimum_raise']));
+    }
+    else {
       $bet = 0;
-    
+    }
+
     file_put_contents('php://stderr', "RBS: BET " . $bet .  "\n");
 
     return $bet;
