@@ -2,7 +2,7 @@
 
 class Player
 {
-  const VERSION = "FunkSoBrothers Kick 'em out 0.9.3";
+  const VERSION = "FunkSoBrothers Kick 'em out 0.9.4";
 
   public function betRequest($game_state)
   {
