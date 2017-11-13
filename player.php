@@ -22,7 +22,7 @@ class Player
     }*/
 
     //return 200; //$game_state->current_buy_in + 1;
-    return $game_state->pot + $game_state->minimum_raise;
+    return max($game_state->big_blind, $game_state->pot + $game_state->minimum_raise);
 
   }
 
