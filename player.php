@@ -6,11 +6,11 @@ class Player
 
     public function betRequest($game_state)
     {
-        if ($game_state->round == 0) {
-          return 10;          
-        }
-        else
-          return $game_state->pot * 2;
+        //if ($game_state->round == 0) {
+        //  return 10;          
+        //}
+        //else
+        return $game_state->pot * 2;
     }
 
     public function showdown($game_state)
