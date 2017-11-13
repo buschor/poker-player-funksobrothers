@@ -20,11 +20,13 @@ class Player
         $iam = $ply;
       }
     }*/
-    $bet = max($game_state->big_blind, $game_state->pot + $game_state->minimum_raise);
+    $inp = json_decode($game_state);
+    
+    $bet = max($inp->big_blind, $inp->pot + $inp->minimum_raise);
     
     file_put_contents('php://stderr', "RBS: BET " . $bet .  "\n");
-    file_put_contents('php://stderr', "RBS: POT " . $game_state->pot . "\n");
-    file_put_contents('php://stderr', "RBS: MIN " . $game_state->minimum_raise . "\n");
+    file_put_contents('php://stderr', "RBS: POT " . $inp->pot . "\n");
+    file_put_contents('php://stderr', "RBS: MIN " . $inp->minimum_raise . "\n");
 
     return $bet;
 
