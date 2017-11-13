@@ -10,14 +10,15 @@ class Player
     //  return 10;
     //}
     //else
-    print_r ($game_state);
-    fwrite(STDERR, serialize($game_state));
+    //print_r ($game_state);
+    //fwrite(STDERR, serialize($game_state));
+    file_put_contents('php://stderr', 'This text goes to STDERR');
 
-    foreach ($game_state->players as $ply) {
+    /*foreach ($game_state->players as $ply) {
       if (count($ply->hole_cards) > 0) {
         $iam = $ply;
       }
-    }
+    }*/
 
     return 200; //$game_state->current_buy_in + 1;
 
