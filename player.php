@@ -12,7 +12,7 @@ class Player
     //else
     //print_r ($game_state);
     //fwrite(STDERR, serialize($game_state));
-    file_put_contents('php://stderr', 'This text goes to STDERR');
+    //file_put_contents('php://stderr', 'This text goes to STDERR');
     file_put_contents('php://stderr', serialize($game_state));
 
     /*foreach ($game_state->players as $ply) {
@@ -21,7 +21,8 @@ class Player
       }
     }*/
 
-    return 200; //$game_state->current_buy_in + 1;
+    //return 200; //$game_state->current_buy_in + 1;
+    return $game_state->pot + $game_state->minimum_raise;
 
   }
 
